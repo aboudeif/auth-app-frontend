@@ -88,7 +88,7 @@ export const Signup: React.FC = () => {
           )}
 
             <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
-            <TextField
+              <TextField
               margin="normal"
               required
               fullWidth
@@ -99,8 +99,12 @@ export const Signup: React.FC = () => {
               autoFocus
               value={formData.name}
               onChange={handleChange}
-            />
-            <TextField
+              inputProps={{
+                minLength: 3,
+              }}
+              helperText="Minimum 3 characters"
+              />
+              <TextField
               margin="normal"
               required
               fullWidth
@@ -114,8 +118,8 @@ export const Signup: React.FC = () => {
                 pattern: REGEX.EMAIL,
               }}
               helperText="Please enter a valid email address"
-            />
-            <TextField
+              />
+              <TextField
               margin="normal"
               required
               fullWidth
@@ -127,25 +131,24 @@ export const Signup: React.FC = () => {
               value={formData.password}
               onChange={handleChange}
               inputProps={{
-              pattern:
-                REGEX.PASSWORD,
+                pattern: REGEX.PASSWORD,
               }}
               helperText="Minimum 8 characters, at least one letter, one number, and one special character"
-            />
-            <Button
+              />
+              <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               disabled={loading}
-            >
+              >
               {loading ? <CircularProgress size={24} /> : 'Create Account'}
-            </Button>
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              </Button>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <MuiLink component={Link} to={routeLinks[RoutesEnum.LOGIN]} variant="body2">
-              Already have an account? Sign in
+                Already have an account? Sign in
               </MuiLink>
-            </Box>
+              </Box>
             </Box>
         </Paper>
       </Box>
