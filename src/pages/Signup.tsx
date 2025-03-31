@@ -86,7 +86,7 @@ export const Signup: React.FC = () => {
             </Alert>
           )}
 
-          <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
+            <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
             <TextField
               margin="normal"
               required
@@ -121,6 +121,11 @@ export const Signup: React.FC = () => {
               autoComplete="new-password"
               value={formData.password}
               onChange={handleChange}
+              inputProps={{
+              pattern:
+                '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$',
+              }}
+              helperText="Minimum 8 characters, at least one letter, one number, and one special character"
             />
             <Button
               type="submit"
@@ -133,10 +138,10 @@ export const Signup: React.FC = () => {
             </Button>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <MuiLink component={Link} to={routeLinks[RoutesEnum.LOGIN]} variant="body2">
-                Already have an account? Sign in
+              Already have an account? Sign in
               </MuiLink>
             </Box>
-          </Box>
+            </Box>
         </Paper>
       </Box>
     </Container>
