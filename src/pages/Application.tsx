@@ -20,6 +20,7 @@ export const Application: React.FC = () => {
   
   return (
     <div>
+      <h2>Welcome to the application.</h2>
       <button onClick={handleLogout}>
           logout
         </button>
