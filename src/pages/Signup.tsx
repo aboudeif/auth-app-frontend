@@ -16,6 +16,7 @@ import {
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { useRequest } from '../hooks';
 import { routeLinks, RoutesEnum } from '../enums';
+import { REGEX } from '../constants/regex';
 
 export const Signup: React.FC = () => {
   const navigate = useNavigate();
@@ -109,6 +110,10 @@ export const Signup: React.FC = () => {
               autoComplete="email"
               value={formData.email}
               onChange={handleChange}
+              inputProps={{
+                pattern: REGEX.EMAIL,
+              }}
+              helperText="Please enter a valid email address"
             />
             <TextField
               margin="normal"
@@ -123,7 +128,7 @@ export const Signup: React.FC = () => {
               onChange={handleChange}
               inputProps={{
               pattern:
-                '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$',
+                REGEX.PASSWORD,
               }}
               helperText="Minimum 8 characters, at least one letter, one number, and one special character"
             />
